@@ -1,0 +1,711 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>M Nandan Kumar |My Personal Website</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f3f6fa;
+    color: #222;
+    line-height: 1.6;
+}
+
+/* NAVIGATION */
+
+nav {
+    background: #123b63;
+    padding: 18px 6%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+nav h2 {
+    color: white;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+nav ul a {
+    color: white;
+    text-decoration: none;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+nav ul a:hover,
+nav ul a.active {
+    color: #ffcc66;
+}
+
+/* PAGE CONTROL */
+
+.page {
+    display: none;
+    min-height: 80vh;
+}
+
+.page.active {
+    display: block;
+}
+
+/* COMMON */
+
+.container {
+    max-width: 1000px;
+    margin: auto;
+    padding: 40px 20px;
+}
+
+.page-title {
+    text-align: center;
+    color: #123b63;
+    margin-bottom: 30px;
+    font-size: 30px;
+}
+
+.card {
+    background: white;
+    padding: 25px;
+    margin: 20px 0;
+    border-radius: 10px;
+    box-shadow: 0 3px 12px #00000012;
+}
+
+.card h2,
+.card h3 {
+    color: #123b63;
+    margin-bottom: 12px;
+}
+
+/* PROFILE PAGE */
+
+.profile-section {
+    background: linear-gradient(135deg, #123b63, #2875a9);
+    color: white;
+    text-align: center;
+    padding: 65px 20px;
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-section h1 {
+    color: white;
+    font-size: 38px;
+    margin: 15px 0;
+}
+
+.profile-section p {
+    font-size: 18px;
+    margin: 5px;
+}
+
+.profile-img {
+    width: 210px;
+    height: 250px;
+    object-fit: cover;
+    border: 5px solid white;
+    border-radius: 15px;
+    margin-bottom: 15px;
+}
+
+/* BUTTONS */
+
+.btn {
+    display: inline-block;
+    background: #ffcc66;
+    color: #123b63;
+    padding: 11px 22px;
+    margin: 15px 5px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background: #ffffff;
+}
+
+/* TABLE */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    background: white;
+}
+
+th, td {
+    border: 1px solid #ccc;
+    padding: 12px;
+    text-align: left;
+}
+
+th {
+    background: #123b63;
+    color: white;
+}
+
+/* SKILLS */
+
+.skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.skills span {
+    background: #dce8f4;
+    color: #123b63;
+    padding: 10px 18px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+/* LISTS */
+
+ul.content-list {
+    padding-left: 25px;
+}
+
+.content-list li {
+    margin: 8px 0;
+}
+
+/* CONTACT */
+
+.contact-box {
+    text-align: center;
+}
+
+.contact-box p {
+    margin: 12px;
+}
+
+/* FOOTER */
+
+footer {
+    background: #123b63;
+    color: white;
+    text-align: center;
+    padding: 18px;
+}
+
+/* MOBILE */
+
+@media(max-width: 768px) {
+
+    nav {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    nav ul {
+        justify-content: center;
+        gap: 12px;
+    }
+
+    nav ul a {
+        font-size: 13px;
+    }
+
+    .profile-section h1 {
+        font-size: 28px;
+    }
+
+    .container {
+        padding: 25px 12px;
+    }
+
+    table {
+        font-size: 12px;
+    }
+
+    th, td {
+        padding: 7px;
+    }
+}
+
+/* PRINT */
+
+@media print {
+    nav, footer, .btn {
+        display: none !important;
+    }
+
+    .page {
+        display: block !important;
+        min-height: auto;
+    }
+
+    .profile-section {
+        background: white;
+        color: black;
+        min-height: auto;
+    }
+
+    .profile-section h1 {
+        color: black;
+    }
+
+    .card {
+        box-shadow: none;
+        border: 1px solid #ddd;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVIGATION -->
+
+<nav>
+    <h2> M NANDAN KUMAR</h2>
+
+    <ul>
+        <li><a href="#profile" class="active"
+        onclick="showPage('profile',this)">Profile</a></li>
+
+        <li><a href="#resume"
+        onclick="showPage('resume',this)">My Resume</a></li>
+
+        <li><a href="#biodata"
+        onclick="showPage('biodata',this)">My Biodata</a></li>
+
+        <li><a href="#contact"
+        onclick="showPage('contact',this)">Contact</a></li>
+    </ul>
+</nav>
+
+<!-- PAGE 1: PROFILE -->
+
+<div id="profile" class="page active">
+
+<section class="profile-section">
+
+    <img src="c:\Users\Nandan\Pictures\20261023_132105.jpg.jpeg"
+         alt="Nandan Kumar Profile Photo"
+         class="profile-img">
+
+    <h1>M NANDAN KUMAR</h1>
+
+    <p>Bachelor of Engineering</p>
+
+    <p>Computer Science and Engineering</p>
+
+    <p>Vivekananda College of Engineering and Technology</p>
+
+    <p>Puttur, Karnataka</p>
+
+    <button class="btn"
+    onclick="showPage('resume')">
+    View My Resume
+    </button>
+
+    <button class="btn"
+    onclick="showPage('biodata')">
+    View My Biodata
+    </button>
+
+</section>
+
+</div>
+
+<!-- PAGE 2: RESUME -->
+
+<div id="resume" class="page">
+
+<div class="container">
+
+<h1 class="page-title">MY RESUME</h1>
+
+<div class="card">
+    <h2>M NANDAN KUMAR</h2>
+    <p>Computer Science and Engineering Student</p>
+    <p>Email: nandanmtk@gmail.com</p>
+    <p>Location:Mathrady house,Ballya village and post,kadaba taluk,dk</p>
+</div>
+
+<div class="card">
+    <h2>Career Objective</h2>
+    <p>
+    To obtain an opportunity where I can apply my technical
+    knowledge, develop my programming skills and contribute
+    to the growth of an organization while continuously learning.
+    </p>
+</div>
+
+<div class="card">
+    <h2>Educational Qualification</h2>
+
+    <table>
+        <tr>
+            <th>Qualification</th>
+            <th>Institution</th>
+            <th>Status</th>
+        </tr>
+
+        <tr>
+            <td>B.E. - Computer Science and Engineering</td>
+            <td>Vivekananda College of Engineering and Technology</td>
+            <td>Ongoing</td>
+        </tr>
+
+        <tr>
+            <td>PUC</td>
+            <td>Vivekananda Pre-University College</td>
+            <td>Completed</td>
+        </tr>
+
+        <tr>
+            <td>SSLC</td>
+            <td>Mar Ivanios English Medium High School</td>
+            <td>Completed</td>
+        </tr>
+    </table>
+</div>
+
+<div class="card">
+    <h2>Academic Performance</h2>
+
+    <table>
+        <tr>
+            <th>Semester</th>
+            <th>CGPA</th>
+            <th>Percentage</th>
+        </tr>
+
+        <tr><td>1st Semester</td><td>7.0</td><td>70%</td></tr>
+        <tr><td>2nd Semester</td><td>7.2</td><td>72%</td></tr>
+        <tr><td>3rd Semester</td><td>6.8</td><td>68%</td></tr>
+        <tr><td>4th Semester</td><td>6.5</td><td>65%</td></tr>
+        <tr><th>Average</th><th>6.875</th><th>68.75%</th></tr>
+    </table>
+</div>
+
+<div class="card">
+    <h2>Technical Skills</h2>
+
+    <div class="skills">
+        <span>C</span>
+        <span>C++</span>
+        <span>Python</span>
+        <span>HTML</span>
+        <span>CSS</span>
+        <span>SQL</span>
+        <span>ESP32</span>
+        <span>Arduino UNO</span>
+    </div>
+</div>
+
+<div class="card">
+    <h2>Academic Project</h2>
+
+    <h3>Two Player Fastest Finger Game</h3>
+
+    <p>
+    Developed a two-player reaction-based game using
+    ESP32 microcontroller.
+    </p>
+
+    <ul class="content-list">
+        <li>Uses push buttons and LEDs.</li>
+        <li>Identifies the fastest player.</li>
+        <li>Programmed using C language.</li>
+    </ul>
+</div>
+
+<div class="card">
+    <h2>Personal Strengths</h2>
+
+    <ul class="content-list">
+        <li>Quick learner</li>
+        <li>Problem-solving ability</li>
+        <li>Teamwork</li>
+        <li>Time management</li>
+    </ul>
+</div>
+
+<div class="card">
+    <h2>Languages Known</h2>
+    <p>Kannada, English and Tulu</p>
+</div>
+
+<div class="card">
+    <h2>Declaration</h2>
+
+    <p>
+    I hereby declare that the information provided above
+    is true and correct to the best of my knowledge and belief.
+    </p>
+
+    <br>
+    <p><b>Place:</b> Kunthoor</p>
+    <p><b>Signature:</b> M Nandan Kumar</p>
+</div>
+
+<center>
+    <button class="btn" onclick="window.print()">
+        Print / Save Resume as PDF
+    </button>
+</center>
+
+</div>
+</div>
+
+<!-- PAGE 3: BIODATA -->
+
+<div id="biodata" class="page">
+
+<div class="container">
+
+<h1 class="page-title">PERSONAL BIODATA</h1>
+
+<div class="card">
+
+<center>
+    <img src="c:\Users\Nandan\Pictures\20261023_132105.jpg.jpeg"
+         alt="Nandan Kumar"
+         class="profile-img">
+
+    <h2>M NANDAN KUMAR</h2>
+</center>
+
+<br>
+
+<h2>Personal Details</h2>
+
+<table>
+    <tr><td>Full Name</td><td>M Nandan Kumar</td></tr>
+    <tr><td>Date of Birth</td><td>14-05-2006</td></tr>
+    <tr><td>Gender</td><td>Male</td></tr>
+    <tr><td>Nationality</td><td>Indian</td></tr>
+    <tr><td>Place</td><td>Kunthoor</td></tr>
+    <tr><td>Location</td><td>Mathrady house,Ballya village and post,kadaba taluk,dk</td></tr>
+    <tr><td>Email</td><td>nandanmtk@gmail.com</td></tr>
+</table>
+
+<h2>Educational Details</h2>
+
+<table>
+    <tr>
+        <td>Degree</td>
+        <td>Bachelor of Engineering - Computer Science and Engineering</td>
+    </tr>
+
+    <tr>
+        <td>College</td>
+        <td>Vivekananda College of Engineering and Technology, Puttur</td>
+    </tr>
+
+    <tr>
+        <td>PUC</td>
+        <td>Vivekananda Pre-University College, Puttur</td>
+    </tr>
+
+    <tr>
+        <td>SSLC</td>
+        <td>Mar Ivanios English Medium High School, Kunthoor</td>
+    </tr>
+</table>
+
+<h2>Languages Known</h2>
+<p>Kannada, English and Tulu</p>
+
+<br>
+
+<h2>Hobbies and Interests</h2>
+
+<ul class="content-list">
+    <li>Learning new technologies</li>
+    <li>Programming and coding</li>
+    <li>Exploring computer-related topics</li>
+    <li>Exploring mobile applications</li>
+</ul>
+
+<br>
+
+<h2>Personal Strengths</h2>
+
+<ul class="content-list">
+    <li>Quick learner</li>
+    <li>Problem-solving ability</li>
+    <li>Teamwork</li>
+    <li>Time management</li>
+</ul>
+
+<br>
+
+<h2>Declaration</h2>
+
+<p>
+I hereby declare that the above information is true
+and correct to the best of my knowledge and belief.
+</p>
+
+<br>
+
+<p><b>Place:</b> Kunthoor</p>
+<p><b>Signature:</b> M Nandan Kumar</p>
+
+</div>
+
+<center>
+    <button class="btn" onclick="window.print()">
+        Print / Save Biodata as PDF
+    </button>
+</center>
+
+</div>
+</div>
+
+<!-- PAGE 4: CONTACT -->
+
+<div id="contact" class="page">
+
+<div class="container">
+
+<h1 class="page-title">CONTACT ME</h1>
+
+<div class="card contact-box">
+
+    <img src="c:\Users\Nandan\Pictures\20261023_132105.jpg.jpeg"
+         alt="Nandan Kumar"
+         class="profile-img">
+
+    <h2>M NANDAN KUMAR</h2>
+
+    <p>Computer Science and Engineering Student</p>
+
+    <hr>
+
+    <br>
+
+    <h3>Email Address</h3>
+
+    <p>
+        <a href="mailto:nandanmtk@gmail.com">
+        nandanmtk@gmail.com
+        </a>
+    </p>
+
+    <br>
+
+    <h3>Location</h3>
+    <p>Puttur, Karnataka, India</p>
+
+    <br>
+
+    <h3>College</h3>
+
+    <p>
+    Vivekananda College of Engineering and Technology,
+    Nehrunagar, Puttur
+    </p>
+
+    <br>
+
+    <h3>Course</h3>
+
+    <p>Bachelor of Engineering</p>
+    <p>Computer Science and Engineering</p>
+
+    <a href="mailto:nandanmtk@gmail.com" class="btn">
+        Send Me an Email
+    </a>
+
+</div>
+
+</div>
+</div>
+
+<!-- FOOTER -->
+
+<footer>
+    <p>© 2026 M Nandan Kumar | Personal Website</p>
+    <p>Designed using HTML, CSS and JavaScript</p>
+</footer>
+
+<!-- JAVASCRIPT PAGE NAVIGATION -->
+
+<script>
+
+function showPage(pageId, clickedLink) {
+
+    // Hide all pages
+    document.querySelectorAll('.page').forEach(page => {
+        page.classList.remove('active');
+    });
+
+    // Display selected page
+    document.getElementById(pageId).classList.add('active');
+
+    // Remove active navigation style
+    document.querySelectorAll('nav ul a').forEach(link => {
+        link.classList.remove('active');
+    });
+
+    // Highlight selected navigation link
+    if (clickedLink) {
+        clickedLink.classList.add('active');
+    } else {
+        document.querySelectorAll('nav ul a').forEach(link => {
+            if (link.getAttribute('href') === '#' + pageId) {
+                link.classList.add('active');
+            }
+        });
+    }
+
+    // Update browser URL
+    history.replaceState(null, '', '#' + pageId);
+
+    // Scroll to top
+    window.scrollTo(0, 0);
+}
+
+// Open correct page when using browser back/forward
+window.addEventListener('hashchange', function() {
+    const pageId = location.hash.substring(1);
+    if (document.getElementById(pageId)?.classList.contains('page')) {
+        showPage(pageId);
+    }
+});
+
+// Open page from URL hash
+window.addEventListener('DOMContentLoaded', function() {
+    const pageId = location.hash.substring(1);
+    if (document.getElementById(pageId)?.classList.contains('page')) {
+        showPage(pageId);
+    }
+});
+
+</script>
+</body>
+</html>
+s
