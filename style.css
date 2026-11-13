@@ -1,0 +1,342 @@
+:root {
+    --ink: #14213d;
+    --paper: #f1f5f9;
+    --surface: #ffffff;
+    --blue: #1d4e89;
+    --blue-dark: #12365f;
+    --gold: #e9b44c;
+    --muted: #5b6b82;
+    --line: #d5dde8;
+    --error: #b42318;
+    --ok: #1a7f4b;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Segoe UI", system-ui, -apple-system, Roboto, Arial, sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ---------- Navigation ---------- */
+nav {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 14px 32px;
+    background: var(--ink);
+    border-bottom: 3px solid var(--gold);
+}
+
+nav h2 {
+    color: #fff;
+    font-size: 1.15rem;
+    letter-spacing: 1px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+nav a {
+    display: block;
+    padding: 8px 14px;
+    color: #d6deeb;
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    transition: background 0.2s, color 0.2s;
+}
+
+nav a:hover {
+    background: rgba(255, 255, 255, 0.12);
+    color: #fff;
+}
+
+nav a.active {
+    background: var(--gold);
+    color: var(--ink);
+    font-weight: 600;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+    outline: 3px solid var(--gold);
+    outline-offset: 2px;
+}
+
+/* ---------- Pages ---------- */
+main {
+    flex: 1;
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+.page {
+    display: none;
+}
+
+.page.active {
+    display: block;
+}
+
+/* ---------- Profile ---------- */
+.profile-section {
+    text-align: center;
+    padding: 48px 24px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+}
+
+.profile-img {
+    width: 170px;
+    height: 170px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 5px solid var(--gold);
+    background: var(--line);
+    margin-bottom: 20px;
+}
+
+.profile-section h1 {
+    font-size: 2rem;
+    margin-bottom: 8px;
+}
+
+.profile-section p {
+    color: var(--muted);
+    font-size: 1.05rem;
+}
+
+.btn-row {
+    margin-top: 28px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+    display: inline-block;
+    padding: 11px 24px;
+    background: var(--blue);
+    color: #fff;
+    border: 2px solid var(--blue);
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: inherit;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+}
+
+.btn:hover {
+    background: var(--blue-dark);
+    border-color: var(--blue-dark);
+}
+
+.btn-outline {
+    background: transparent;
+    color: var(--blue);
+}
+
+.btn-outline:hover {
+    background: var(--blue);
+    color: #fff;
+}
+
+/* ---------- Content sections ---------- */
+.card-section {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 36px;
+}
+
+.card-section h1 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 3px solid var(--gold);
+    display: inline-block;
+}
+
+.card-section h3 {
+    margin-top: 26px;
+    margin-bottom: 8px;
+    color: var(--blue);
+    font-size: 1.15rem;
+}
+
+.card-section p {
+    max-width: 70ch;
+}
+
+ul.plain {
+    list-style: none;
+}
+
+ul.plain li {
+    padding: 10px 0;
+    border-bottom: 1px solid var(--line);
+}
+
+ul.plain li:last-child {
+    border-bottom: none;
+}
+
+ul.tags {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+ul.tags li {
+    padding: 5px 14px;
+    background: #e4ecf6;
+    color: var(--blue-dark);
+    border-radius: 999px;
+    font-size: 0.92rem;
+}
+
+/* ---------- Biodata table ---------- */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 8px;
+}
+
+th,
+td {
+    text-align: left;
+    padding: 12px 14px;
+    border-bottom: 1px solid var(--line);
+    vertical-align: top;
+}
+
+th {
+    width: 36%;
+    color: var(--muted);
+    font-weight: 600;
+    background: #f7f9fc;
+}
+
+/* ---------- Contact form ---------- */
+form {
+    margin-top: 18px;
+    max-width: 520px;
+}
+
+label {
+    display: block;
+    margin-top: 16px;
+    margin-bottom: 4px;
+    font-weight: 600;
+}
+
+input,
+textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1.5px solid var(--line);
+    border-radius: 8px;
+    font: inherit;
+    background: #fff;
+    color: var(--ink);
+}
+
+input.invalid,
+textarea.invalid {
+    border-color: var(--error);
+}
+
+.error {
+    display: block;
+    min-height: 1.2em;
+    margin-top: 4px;
+    font-size: 0.85rem;
+    color: var(--error);
+}
+
+form .btn {
+    margin-top: 14px;
+}
+
+#formStatus {
+    margin-top: 12px;
+    font-weight: 600;
+    color: var(--ok);
+}
+
+/* ---------- Footer ---------- */
+footer {
+    text-align: center;
+    padding: 18px;
+    font-size: 0.9rem;
+    color: var(--muted);
+    border-top: 1px solid var(--line);
+}
+
+/* ---------- Mobile ---------- */
+@media (max-width: 600px) {
+    nav {
+        padding: 12px 16px;
+        justify-content: center;
+    }
+
+    nav ul {
+        justify-content: center;
+    }
+
+    .card-section {
+        padding: 22px 18px;
+    }
+
+    th,
+    td {
+        display: block;
+        width: 100%;
+    }
+
+    th {
+        border-bottom: none;
+        padding-bottom: 2px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    * {
+        transition: none !important;
+    }
+}
